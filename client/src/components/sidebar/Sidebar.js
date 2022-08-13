@@ -6,7 +6,7 @@ const Sidebar = () => {
   const [cats, setCats] = useState([]);
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("http://localhost:3000/categories");
+      const res = await axios.get("/categories");
       setCats(res.data);
     };
     getCats();

@@ -12,7 +12,7 @@ const Settings = () => {
   const [success, setSuccess] = useState(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:3000/images/";
+  const PF = "/images/";
 
   useEffect(() => {
     setUsername(user.username);
@@ -21,7 +21,7 @@ const Settings = () => {
   console.log(user._id);
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/settings/${user}`, {
+      await axios.delete(`/settings/${user}`, {
         // data: { username: user.username },
       });
       window.location.replace("/");
@@ -45,13 +45,13 @@ const Settings = () => {
       updatedUser.profilePic = filename;
       // console.log(updatedUser.profilePic);
       try {
-        await axios.post("http://localhost:3000/upload", data);
+        await axios.post("/upload", data);
       } catch (err) {
         console.log(err.message);
       }
     }
     try {
-      const res = await axios.put("http://localhost:3000/users/" + user._id, updatedUser);
+      const res = await axios.put("/users/" + user._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       console.log(user);

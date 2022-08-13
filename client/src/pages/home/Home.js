@@ -27,7 +27,7 @@ const Home = () => {
   // }, []);
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get("http://localhost:3000/posts" + search);
+      const res = await axios.get("/posts" + search);
       setPost(res.data);
       console.log(res.data, "Home page ");
     };

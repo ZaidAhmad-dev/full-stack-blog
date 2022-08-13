@@ -18,7 +18,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("http://localhost:3000/posts/" + path);
+      const res = await axios.get("/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -28,7 +28,7 @@ const SinglePost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/posts/${post._id}`, {
+      await axios.delete(`/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -37,7 +37,7 @@ const SinglePost = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:3000/posts/${post._id}`, {
+      await axios.put(`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
